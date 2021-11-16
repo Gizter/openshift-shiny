@@ -16,19 +16,19 @@ The Docker image tags match those of parent docker images from [rocker/shiny* im
 ### Create a Dockerfile in your git repo
 Create a file named `Dockerfile` in your git repo.
 This file will specify:
-- The base docker image to use (such as `dukegcb/openshift-shiny-verse:4.0.2`)
+- The base docker image to use (such as `dukegcb/openshift-shiny-verse:4.1.2`)
 - Any additional requirements that need to be installed
 - Location of your R code within your repo
 
 As an example if your R shiny app is under a directory named `src` within your git repo and has no additional requirements create a `Dockerfile` with the following contents:
 ```
-FROM dukegcb/openshift-shiny-verse:4.0.2
+FROM dukegcb/openshift-shiny-verse:4.1.2
 ADD ./src /srv/code
 ```
 
 If you additionally need to install the [here shiny package](https://github.com/jennybc/here_here) your `Dockerfile` should contain the following contents:
 ```
-FROM dukegcb/openshift-shiny-verse:4.0.2
+FROM dukegcb/openshift-shiny-verse:4.1.2
 RUN install2.r here
 ADD ./src /srv/code
 ```
