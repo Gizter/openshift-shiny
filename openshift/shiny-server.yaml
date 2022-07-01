@@ -123,7 +123,7 @@ parameters:
   value: shiny
 - name: APP_GIT_URI
   description: Deployment git uri
-  value: https://github.com/Duke-GCB/openshift-shiny.git
+  value: https://github.com/Gizter/openshift-shiny.git
 - name: APP_GIT_BRANCH
   description: Deployment git branch
   value: master
