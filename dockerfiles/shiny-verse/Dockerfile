@@ -15,4 +15,7 @@ RUN chmod a+rx /usr/bin/shiny-server.sh
 RUN chmod -R a+rwX /var/log/shiny-server
 RUN chmod -R a+rwX /var/lib/shiny-server
 
+#Custom
+RUN cp -r /srv/shiny-server/sample-apps/hello /srv/code/
+
 CMD /usr/bin/shiny-server.sh
