@@ -17,6 +17,7 @@ RUN apt-get update -qq && apt-get -y --no-install-recommends install \
     libudunits2-dev \
     libgdal-dev \
     libssl-dev
+    
 ## update system libraries
 RUN apt-get update && \
     apt-get upgrade -y && \
@@ -39,5 +40,6 @@ RUN chmod -R a+rwX /var/lib/shiny-server
 
 #Custom
 RUN cp -r /srv/shiny-server/sample-apps/hello /srv/code/
+RUN Rscript -e "install.packages(c('skimr'))"
 
 CMD /usr/bin/shiny-server.sh
