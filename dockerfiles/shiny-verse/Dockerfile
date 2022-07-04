@@ -1,7 +1,7 @@
-mkdir /srv/code/
 FROM rocker/shiny-verse:4.1.2
 
 COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
+RUN mkdir /srv/code/
 RUN chown -R shiny /var/lib/shiny-server/ && chown -R shiny /srv/code/
 
 # OpenShift gives a random uid for the user and some programs try to find a username from the /etc/passwd.
