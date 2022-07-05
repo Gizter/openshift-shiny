@@ -23,7 +23,7 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get clean
 ##Permissions to download packages
-RUN chown -R shiny /usr/local/lib/R/site-library/
+RUN sudo usermod -a -G staff shiny
 
 #Main install
 COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
