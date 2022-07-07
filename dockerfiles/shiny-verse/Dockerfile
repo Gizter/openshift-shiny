@@ -3,12 +3,7 @@ FROM rocker/shiny-verse:4.1.2
 RUN apt-get update && apt-get install -y \
     libcurl4-gnutls-dev \
     libssl-dev
-    
-## update system libraries
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get clean
-    
+       
 ##Permissions to download packages
 RUN usermod -a -G staff shiny
 
