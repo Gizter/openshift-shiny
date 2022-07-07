@@ -1,21 +1,7 @@
-FROM rocker/shiny:latest
+FROM rocker/shiny:4.0.5
 
-RUN apt-get update -qq && apt-get -y --no-install-recommends install \
-    libxml2-dev \
-    libcairo2-dev \
-    libsqlite3-dev \
-    libpq-dev \
-    libssh2-1-dev \
-    unixodbc-dev \
-    r-cran-v8 \
-    libv8-dev \
-    net-tools \
-    libprotobuf-dev \
-    protobuf-compiler \
-    libjq-dev \
-    libudunits2-0 \
-    libudunits2-dev \
-    libgdal-dev \
+RUN apt-get update && apt-get install -y \
+    libcurl4-gnutls-dev \
     libssl-dev
     
 ## update system libraries
@@ -25,6 +11,9 @@ RUN apt-get update && \
     
 ##Permissions to download packages
 RUN usermod -a -G staff shiny
+
+RUN echo 'Installing Packages for Shiny'
+RUN echo 'install.packages(c("shiny","ggplot2","plotly","shinydashboard"), repos="cran.us.r-project.org")' > /tmp/packages.R && Rscript /tmp/packages.R
 
 #Main install
 COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
@@ -41,8 +30,5 @@ RUN chmod a+rx /usr/bin/shiny-server.sh
 # Make sure the directory for individual app logs exists and is usable
 RUN chmod -R a+rwX /var/log/shiny-server
 RUN chmod -R a+rwX /var/lib/shiny-server
-
-RUN echo 'Installing Packages for Shiny'
-RUN echo 'install.packages(c("ggplot2","plotly","readxl","dplyr","data.table","shiny", "DT", "shinythemes"), repos="cran.us.r-project.org", dependencies=TRUE)' > /tmp/packages.R && Rscript /tmp/packages.R
 
 CMD /usr/bin/shiny-server.sh
