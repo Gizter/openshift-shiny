@@ -56,7 +56,7 @@ RUN Rscript -e 'remotes::install_version("DT",upgrade="never", version = "0.16")
 RUN Rscript -e 'remotes::install_version("golem",upgrade="never", version = "0.2.1")'
 RUN Rscript -e 'remotes::install_version("wordcloud",upgrade="never", version = "2.6")'
 RUN Rscript -e 'remotes::install_version("ggthemes",upgrade="never", version = "4.2.4")'
-RUN Rscript -e "install.packages('plotly')
+RUN Rscript -e 'install.packages("plotly")'
 RUN R -e 'remotes::install_local(upgrade="never")'
 
 #Main install
