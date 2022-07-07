@@ -10,7 +10,7 @@ RUN apt-get update && \
     apt-get clean
     
 ##Permissions to download packages
-RUN usermod -a -G staff shiny
+#RUN usermod -a -G staff shiny
 
 RUN echo 'Installing Packages for Shiny'
 RUN echo 'install.packages(c("shiny","ggplot2","plotly","shinydashboard"), repos="cran.us.r-project.org")' > /tmp/packages.R && Rscript /tmp/packages.R
