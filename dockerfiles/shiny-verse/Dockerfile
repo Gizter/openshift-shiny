@@ -22,6 +22,7 @@ RUN apt-get update -qq && apt-get -y --no-install-recommends install \
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get clean
+    
 ##Permissions to download packages
 RUN usermod -a -G staff shiny
 
