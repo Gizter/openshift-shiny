@@ -1,4 +1,4 @@
-FROM rocker/shiny-verse:latest
+FROM rocker/shiny:latest
 
 RUN apt-get update -qq && apt-get -y --no-install-recommends install \
     libxml2-dev \
@@ -26,9 +26,6 @@ RUN apt-get update && \
 ##Permissions to download packages
 RUN usermod -a -G staff shiny
 
-RUN echo 'Installing Packages for Shiny'
-RUN echo 'install.packages(c("ggplot2","plotly","readxl","dplyr","data.table","shiny", "DT", "shinythemes"), repos="cran.us.r-project.org", dependencies=TRUE)' > /tmp/packages.R && Rscript /tmp/packages.R
-
 #Main install
 COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
 RUN mkdir /srv/code/
@@ -44,5 +41,8 @@ RUN chmod a+rx /usr/bin/shiny-server.sh
 # Make sure the directory for individual app logs exists and is usable
 RUN chmod -R a+rwX /var/log/shiny-server
 RUN chmod -R a+rwX /var/lib/shiny-server
+
+RUN echo 'Installing Packages for Shiny'
+RUN echo 'install.packages(c("ggplot2","plotly","readxl","dplyr","data.table","shiny", "DT", "shinythemes"), repos="cran.us.r-project.org", dependencies=TRUE)' > /tmp/packages.R && Rscript /tmp/packages.R
 
 CMD /usr/bin/shiny-server.sh
