@@ -13,7 +13,7 @@ RUN apt-get update && \
 RUN usermod -a -G staff shiny
 
 RUN echo 'Installing Packages for Shiny'
-RUN echo 'install.packages(c("shiny","ggplot2","plotly","shinydashboard"), repos="cran.us.r-project.org")' > /tmp/packages.R && Rscript /tmp/packages.R
+RUN echo 'install.packages(c("shiny","ggplot2","plotly","shinydashboard","shinythemes","dplyr","readxl","data.table","DT"), repos="cran.us.r-project.org")' > /tmp/packages.R && Rscript /tmp/packages.R
 
 COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
 RUN mkdir /srv/code/
