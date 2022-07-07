@@ -23,7 +23,7 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get clean
 ##Permissions to download packages
-RUN sudo usermod -a -G staff shiny
+RUN usermod -a -G staff shiny
 
 RUN echo 'Installing Packages for Shiny'
 RUN echo 'install.packages(c("ggplot2","plotly","readxl","dplyr","data.table","shiny", "DT", "shinythemes"), repos="cran.us.r-project.org", dependencies=TRUE)' > /tmp/packages.R && Rscript /tmp/packages.R
