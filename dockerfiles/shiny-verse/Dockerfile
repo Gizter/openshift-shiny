@@ -1,13 +1,9 @@
 FROM rocker/shiny-verse:4.1.2
 
-RUN apt-get update && apt-get install -y \
-    libcurl4-gnutls-dev \
-    libssl-dev
-       
 ##Permissions to download packages
-RUN usermod -a -G staff shiny
+#RUN usermod -a -G staff shiny
 
-RUN echo 'Installing Packages for Shiny'
+#RUN echo 'Installing Packages for Shiny'
 #RUN echo 'install.packages(c("shiny","ggplot2","plotly","shinydashboard"), repos="cran.us.r-project.org")' > /tmp/packages.R && Rscript /tmp/packages.R
 
 #Main install
